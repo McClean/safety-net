@@ -15,8 +15,8 @@ namespace GlobalErrorHandling.Classes.ErrorHandling
                 .Where(type => typeof(BaseExceptionHandler).IsAssignableFrom(type) && type != typeof(BaseExceptionHandler));
 
             //Find the correct exception handler implementation
-            return allErrorHandlers.Select(comparator => (IExceptionHandler) Activator.CreateInstance(comparator))
-                .FirstOrDefault(comp => comp.CanHandleException(ex));
+            return allErrorHandlers.Select(errorHandler => (IExceptionHandler) Activator.CreateInstance(errorHandler))
+                .FirstOrDefault(handler => handler.CanHandleException(ex));
         }
     }
 }
