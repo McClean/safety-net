@@ -9,8 +9,9 @@ namespace GlobalErrorHandling.Classes.ErrorHandling
     {
         protected Exception Exception { get; set; }
 
-        public abstract bool CanHandleError(Exception ex);
-
-        public abstract Task HandleException(HttpResponse response);
+        //Qualifying function
+        public abstract bool CanHandleException(Exception ex);
+        //Response formatter
+        public abstract Task FormatResponse(HttpResponse response);
     }
 }

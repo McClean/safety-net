@@ -10,14 +10,14 @@ namespace GlobalErrorHandling.Classes.ErrorHandling
 {
     public class FileNotFoundExceptionHandler : BaseExceptionHandler
     {
-        public override bool CanHandleError(Exception ex)
+        public override bool CanHandleException(Exception ex)
         {
             if (!(ex is FileNotFoundException)) return false;
             Exception = ex;
             return true;
         }
 
-        public override Task HandleException(HttpResponse response)
+        public override Task FormatResponse(HttpResponse response)
         {
             response.StatusCode = 404;
             return response.WriteAsync(Exception.Message);
@@ -25,14 +25,14 @@ namespace GlobalErrorHandling.Classes.ErrorHandling
     }
     public class ArgumentNullExceptionHandler : BaseExceptionHandler
     {
-        public override bool CanHandleError(Exception ex)
+        public override bool CanHandleException(Exception ex)
         {
             if (!(ex is ArgumentNullException)) return false;
             Exception = ex;
             return true;
         }
 
-        public override Task HandleException(HttpResponse response)
+        public override Task FormatResponse(HttpResponse response)
         {
             response.StatusCode = 406;
             return response.WriteAsync(Exception.Message);
@@ -40,14 +40,14 @@ namespace GlobalErrorHandling.Classes.ErrorHandling
     }
     public class NullReferenceExceptionHandler : BaseExceptionHandler
     {
-        public override bool CanHandleError(Exception ex)
+        public override bool CanHandleException(Exception ex)
         {
             if (!(ex is NullReferenceException)) return false;
             Exception = ex;
             return true;
         }
 
-        public override Task HandleException(HttpResponse response)
+        public override Task FormatResponse(HttpResponse response)
         {
             response.StatusCode = 403;
             return response.WriteAsync(Exception.Message);
@@ -55,14 +55,14 @@ namespace GlobalErrorHandling.Classes.ErrorHandling
     }
     public class MyCustomExceptionHandler : BaseExceptionHandler
     {
-        public override bool CanHandleError(Exception ex)
+        public override bool CanHandleException(Exception ex)
         {
             if (!(ex is MyCustomException)) return false;
             Exception = ex;
             return true;
         }
 
-        public override Task HandleException(HttpResponse response)
+        public override Task FormatResponse(HttpResponse response)
         {
             response.StatusCode = 401;
             return response.WriteAsync(Exception.Message);
@@ -70,7 +70,7 @@ namespace GlobalErrorHandling.Classes.ErrorHandling
     }
     public class ExceptionHandler : BaseExceptionHandler
     {
-        public override bool CanHandleError(Exception ex)
+        public override bool CanHandleException(Exception ex)
         {
             
             if (!(ex is Exception)) return false;
@@ -78,7 +78,7 @@ namespace GlobalErrorHandling.Classes.ErrorHandling
             return true;
         }
 
-        public override Task HandleException(HttpResponse response)
+        public override Task FormatResponse(HttpResponse response)
         {
             response.StatusCode = 500;
             return response.WriteAsync(Exception.Message);

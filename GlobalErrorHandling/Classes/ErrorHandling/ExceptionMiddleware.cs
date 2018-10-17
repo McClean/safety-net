@@ -32,7 +32,7 @@ namespace GlobalErrorHandling.Classes.ErrorHandling
         {
             //Your custom response handler here.
             context.Response.ContentType = "application/json";
-            return ExceptionHandlerFactory.GetErrorHandler(exception).HandleException(context.Response);
+            return ExceptionHandlerFactory.GetErrorHandler(exception).FormatResponse(context.Response);
         }
     }
 }

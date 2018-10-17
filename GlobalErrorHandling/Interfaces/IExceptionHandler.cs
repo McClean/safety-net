@@ -6,7 +6,7 @@ namespace GlobalErrorHandling.Interfaces
 {
     public interface IExceptionHandler
     {
-        bool CanHandleError(Exception ex);
-        Task HandleException(HttpResponse response);
+        bool CanHandleException(Exception ex);
+        Task FormatResponse(HttpResponse response);
     }
 }

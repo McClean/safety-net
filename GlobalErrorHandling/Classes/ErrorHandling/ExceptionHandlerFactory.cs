@@ -16,7 +16,7 @@ namespace GlobalErrorHandling.Classes.ErrorHandling
 
             //Find the correct exception handler implementation
             return allErrorHandlers.Select(comparator => (IExceptionHandler) Activator.CreateInstance(comparator))
-                .FirstOrDefault(comp => comp.CanHandleError(ex));
+                .FirstOrDefault(comp => comp.CanHandleException(ex));
         }
     }
 }
